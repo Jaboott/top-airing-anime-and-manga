@@ -13,8 +13,10 @@ def parse_anime(anime):
     synopsis = anime["synopsis"]
     broadcast = anime["broadcast"]
     genre = parse_genre(anime["genres"])
+    score = anime["score"]
+    episodes = anime["episodes"]
 
-    return Anime(title, image, synopsis, broadcast, genre)
+    return Anime(title, image, synopsis, broadcast, genre, score, episodes)
 
 
 def parse_genre(genres):
