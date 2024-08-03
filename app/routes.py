@@ -1,13 +1,13 @@
 from app import app
-from flask import jsonify
+from flask import jsonify, render_template
 import requests
 
 from app.json_parser import parse_anime
 
 
 @app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+def index():
+    return render_template("index.html")
 
 
 @app.route('/anime')
