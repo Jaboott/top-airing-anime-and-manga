@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+    /*border: 1px solid red;*/
+}
+
+nav {
+    background-color: white;
+    overflow: hidden;
+    width: 100%;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-content: center;
+}
+
+.menu li {
+    float: left;
+}
+
+.menu li a {
+    display: block;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.menu li a:hover {
+    background-color: white;
+}
+
+.main {
+    margin: 0% 10%;
+}
+
+.main header {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    display: flex;
+}
+
+.main header h1 {
+    font-weight: 370;
+    font-size: 30px;
+}
+
+.legend {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.legend h4 {
+    text-align: center;
+}
+
+.rank_legend {
+    width: 96px;
+}
+
+.title_legend {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.score_legend {
+    width: 150px;
+    margin-left: 10px;
+}
+
+.anime_container {
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-bottom: 5px;
+}
+
+.rank {
+    align-content: center;
+    width: 96px;
+}
+
+.rank h1 {
+    font-size: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+.title {
+    display: flex;
+    align-content: center;
+    margin-left: 10px;
+    padding: 7px 7px;
+    flex-grow: 1;
+}
+
+.title img {
+    margin-right: 24px;
+}
+
+.title li {
+    list-style-type: none;
+}
+
+.score {
+    align-content: center;
+    margin-left: 10px;
+    width: 150px;
+}
+
+.score h1 {
+    font-size: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
