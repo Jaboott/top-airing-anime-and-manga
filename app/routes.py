@@ -1,5 +1,5 @@
 from app import app
-from flask import jsonify, render_template
+from flask import jsonify, render_template, request
 import requests
 
 from app.json_parser import parse_anime, parse_manga
@@ -12,7 +12,14 @@ def index():
 
 @app.route('/anime')
 def get_top_anime():
-    response = requests.get("https://api.jikan.moe/v4/top/anime?filter=airing&type=tv").json()
+    args = request.args.get("airing")
+    url = "https://api.jikan.moe/v4/top/anime?type=tv"
+
+    # Add filter to url if airing field is non-empty
+    if args is not None:
+        url += "&filter=airing"
+
+    response = requests.get(url).json()
     # A list of objects with information about an anime
     data = response['data']
     anime_list = []
