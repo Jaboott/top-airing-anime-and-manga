@@ -1,5 +1,6 @@
 class Anime:
-    def __init__(self, title, image, synopsis, broadcast, genre, score, episodes):
+    # Todo: add an timeline field for already completed anime
+    def __init__(self, title, image, synopsis, broadcast, genre, score, episodes, timeline):
         self.title = title
         self.image = image
         self.synopsis = synopsis
@@ -7,14 +8,16 @@ class Anime:
         self.genre = genre
         self.score = score
         self.episodes = episodes
+        self.timeline = timeline
 
     def __repr__(self):
         return (f'Anime: {self.title} \n'
                 f'Synopsis: {self.synopsis} \n'
                 f'Broadcast: {self.broadcast} \n'
-                f'Genre: {self.genre}'
+                f'Genre: {self.genre} \n'
                 f'Score: {self.score} \n'
-                f'Episodes: {self.episodes}')
+                f'Episodes: {self.episodes} \n'
+                f'Timeline: {self.timeline}')
 
     def to_dict(self):
         return {
@@ -24,7 +27,8 @@ class Anime:
             'broadcast': self.broadcast,
             'genre': self.genre,
             'score': self.score,
-            'episodes': self.episodes
+            'episodes': self.episodes,
+            'timeline': self.timeline
         }
 
 
