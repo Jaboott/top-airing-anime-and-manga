@@ -22,18 +22,20 @@ function switchPage(mode) {
     }
 }
 
-function loadList(url, isAnime = true) {
+function loadList(url, isAnime) {
     fetch(url)
         .then(response => response.json())
         .then(data => {
             const listContainer = document.querySelector('.ranking');
+            // Build List item for each item of data
             data.forEach((item, index) => {
                 const { title, image, genre, episodes, chapters, score, broadcast, timeline } = item;
                 const genres = genre.join(', ');
                 const count = isAnime ? episodes || '???' : chapters || '???';
                 const countLabel = isAnime ? 'Episodes' : 'Chapters';
-                const timeLabel = isAnime ? `Broadcast: ${broadcast}` : `Timeline: ${timeline}`;
-                
+                // Shows timeline if it's not an anime or anime is already completed
+                const timeLabel = (isAnime && timeline.includes('?')) ? `Broadcast: ${broadcast}` : `Timeline: ${timeline}`;
+
                 // Creating the html div that display the anime/manga
                 const listItem = document.createElement('div');
                 listItem.classList.add('anime_container');
