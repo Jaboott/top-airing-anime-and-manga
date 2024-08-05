@@ -16,8 +16,9 @@ def parse_anime(anime):
     genre = parse_genre(anime["genres"])
     score = anime["score"]
     episodes = anime["episodes"]
+    timeline = anime["aired"]["string"]
 
-    return Anime(title, image, synopsis, broadcast, genre, score, episodes)
+    return Anime(title, image, synopsis, broadcast, genre, score, episodes, timeline)
 
 
 def parse_manga(manga):

@@ -1,5 +1,5 @@
 class Anime:
-    # Todo: add an timeline field for already completed anime
+
     def __init__(self, title, image, synopsis, broadcast, genre, score, episodes, timeline):
         self.title = title
         self.image = image
