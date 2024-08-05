@@ -26,12 +26,18 @@ nav {
     float: left;
 }
 
-.menu li a {
+.menu li button {
     display: block;
     color: black;
+    background-color: white;
     font-size: 20px;
     text-align: center;
     padding: 30px 20px;
+    border: none;
+}
+
+.menu li button:hover {
+    background-color: gainsboro;
 }
 
 .menu li a:hover {
@@ -132,7 +138,7 @@ nav {
     text-align: center;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
     .rank {
         display: none;
     }
