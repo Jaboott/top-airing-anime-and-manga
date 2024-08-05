@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -6,10 +7,10 @@
     box-sizing: border-box;
     font-family: "Rubik", sans-serif;
     /*border: 1px solid red;*/
+    background-color: #1e1e1e;
 }
 
 nav {
-    background-color: white;
     overflow: hidden;
     width: 100%;
 }
@@ -28,35 +29,37 @@ nav {
 
 .menu li button {
     display: block;
-    color: black;
-    background-color: white;
     font-size: 20px;
     text-align: center;
     padding: 30px 20px;
     border: none;
+    color: #f9f9f9;
 }
 
 .menu li button:hover {
-    background-color: gainsboro;
+    background-color: #333;
+
 }
 
-.menu li a:hover {
-    background-color: white;
+hr {
+    border-color: black;
 }
 
 .main {
-    margin: 0% 15%;
+    overflow: hidden;
+    margin: 0% 10%;
 }
 
 .main header {
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 60px;
+    padding-bottom: 40px;
     display: flex;
 }
 
 .main header h1 {
     font-weight: 370;
-    font-size: 30px;
+    font-size: 40px;
+    color: #ffe537;
 }
 
 .legend {
@@ -65,11 +68,13 @@ nav {
 }
 
 .legend h4 {
+    color: #f9f9f9;
     text-align: center;
 }
 
 .rank_legend {
-    width: 96px;
+    padding-left: 7px;
+    text-align: left;
 }
 
 .title_legend {
@@ -78,27 +83,32 @@ nav {
 }
 
 .score_legend {
-    width: 150px;
+    text-align: right;
     margin-left: 10px;
-    padding-right: 10px;
+    padding-right: 7px;
 }
 
 .anime_container {
     display: flex;
-    border: 1px solid gray;
+    overflow: hidden;
+    border: 1px solid #333;
     border-radius: 9px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .rank {
     align-content: center;
     width: 96px;
+    color: #537fe7;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-width:96px;
 }
 
 .rank h1 {
     font-size: 60px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     text-align: center;
 }
 
@@ -114,14 +124,20 @@ nav {
     height: 134px;
     width: 103px;
     border-radius: 5px;
+    min-width:103px;
 }
 
 .title li {
     list-style-type: none;
 }
 
+.title h3 {
+    font-size: 25px;
+    color: #f9f9f9;
+}
 .title h4 {
     font-weight: normal;
+    color: #b6b6b6;
 }
 
 .score {
@@ -131,18 +147,27 @@ nav {
 }
 
 .score h1 {
-    font-size: 30px;
+    font-size: 25px;
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
+    color: #537fe7;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
     .rank {
         display: none;
     }
     .rank_legend {
         display: none;
+    }
+    .title_legend {
+        margin-left: 0;
+        padding-left: 7px;
+        flex-grow: 0;
+    }
+    .legend {
+        justify-content: space-between;
     }
     .main {
         margin: 0% 5%;
