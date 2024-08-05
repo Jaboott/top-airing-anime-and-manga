@@ -1,6 +1,6 @@
 class Anime:
 
-    def __init__(self, title, image, synopsis, broadcast, genre, score, episodes, timeline):
+    def __init__(self, title, image, synopsis, broadcast, genre, score, episodes, timeline, youtube_link):
         self.title = title
         self.image = image
         self.synopsis = synopsis
@@ -9,6 +9,7 @@ class Anime:
         self.score = score
         self.episodes = episodes
         self.timeline = timeline
+        self.youtube_link = youtube_link
 
     def __repr__(self):
         return (f'Anime: {self.title} \n'
@@ -17,7 +18,8 @@ class Anime:
                 f'Genre: {self.genre} \n'
                 f'Score: {self.score} \n'
                 f'Episodes: {self.episodes} \n'
-                f'Timeline: {self.timeline}')
+                f'Timeline: {self.timeline} \n'
+                f'Youtube Link: {self.youtube_link}')
 
     def to_dict(self):
         return {
@@ -28,7 +30,8 @@ class Anime:
             'genre': self.genre,
             'score': self.score,
             'episodes': self.episodes,
-            'timeline': self.timeline
+            'timeline': self.timeline,
+            'youtube_link': self.youtube_link
         }
 
 

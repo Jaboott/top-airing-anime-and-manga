@@ -17,8 +17,11 @@ def parse_anime(anime):
     score = anime["score"]
     episodes = anime["episodes"]
     timeline = anime["aired"]["string"]
+    youtube_link = str(anime["trailer"]["embed_url"])
+    # Changing autoplay to off
+    youtube_link = youtube_link.replace("autoplay=1", "autoplay=0")
 
-    return Anime(title, image, synopsis, broadcast, genre, score, episodes, timeline)
+    return Anime(title, image, synopsis, broadcast, genre, score, episodes, timeline, youtube_link)
 
 
 def parse_manga(manga):
