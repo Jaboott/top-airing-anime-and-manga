@@ -39,7 +39,7 @@ nav {
 }
 
 .main {
-    margin: 0% 10%;
+    margin: 0% 15%;
 }
 
 .main header {
@@ -74,6 +74,7 @@ nav {
 .score_legend {
     width: 150px;
     margin-left: 10px;
+    padding-right: 10px;
 }
 
 .anime_container {
@@ -105,10 +106,17 @@ nav {
 
 .title img {
     margin-right: 24px;
+    height: 134px;
+    width: 103px;
+    border-radius: 5px;
 }
 
 .title li {
     list-style-type: none;
+}
+
+.title h4 {
+    font-weight: normal;
 }
 
 .score {
@@ -122,4 +130,16 @@ nav {
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
+}
+
+@media (max-width: 700px) {
+    .rank {
+        display: none;
+    }
+    .rank_legend {
+        display: none;
+    }
+    .main {
+        margin: 0% 5%;
+    }
 }
