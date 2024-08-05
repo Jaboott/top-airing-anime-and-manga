@@ -30,12 +30,12 @@ class Anime:
 
 class Manga:
     def __init__(self, title, image, synopsis, timeline, genre, score, chapters):
-        self.title = title,
-        self.image = image,
-        self.synopsis = synopsis,
-        self.timeline = timeline,
-        self.genre = genre,
-        self.score = score,
+        self.title = title
+        self.image = image
+        self.synopsis = synopsis
+        self.timeline = timeline
+        self.genre = genre
+        self.score = score
         self.chapters = chapters
 
     def __repr__(self):
