@@ -33,7 +33,14 @@ def get_top_anime():
 
 @app.route('/manga')
 def get_top_manga():
-    response = requests.get("https://api.jikan.moe/v4/top/manga?type=manga&filter=publishing").json()
+    args = request.args.get("airing")
+    url = "https://api.jikan.moe/v4/top/manga?type=manga"
+
+    # Add filter to url if airing field is non-empty
+    if args is not None:
+        url += "&filter=publishing"
+
+    response = requests.get(url).json()
     # A list of objects with information about a manga
     data = response['data']
     manga_list = []
