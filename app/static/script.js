@@ -29,7 +29,7 @@ function loadList(url, isAnime) {
             const listContainer = document.querySelector('.ranking');
             // Build List item for each item of data
             data.forEach((item, index) => {
-                const { title, image, genre, episodes, chapters, score, broadcast, timeline } = item;
+                const { title, image, genre, episodes, chapters, score, broadcast, timeline, youtube_link, synopsis} = item;
                 const genres = genre.join(', ');
                 const count = isAnime ? episodes || '???' : chapters || '???';
                 const countLabel = isAnime ? 'Episodes' : 'Chapters';
@@ -56,6 +56,12 @@ function loadList(url, isAnime) {
                         <h1>${score}⭐</h1>
                     </div>
                 `;
+                // Add on click event to container if it's an anime
+                if (isAnime) {
+                    listItem.addEventListener("click", () => {
+                        openModal(score, count, genres, timeline, youtube_link, synopsis);
+                    });
+                }
                 listContainer.appendChild(listItem);
             });
         });
@@ -77,5 +83,41 @@ function resetList() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('overlay');
+
+    overlay.addEventListener('click', () => {
+        closeModal();
+    });
     loadAnimeList(true);
 });
+
+function openModal(score, episodes, genre, timeline, youtube, synopsis) {
+    const modal = document.getElementById('modal');
+    const overlay = document.getElementById('overlay');
+
+    document.getElementById('modal_video').src = youtube;
+    document.getElementById('modal_score').innerText = 'Score: ' + score + '⭐';
+    document.getElementById('modal_ep').innerText = episodes + ' Episodes';
+    document.getElementById('modal_genre').innerText = genre;
+    document.getElementById('modal_timeline').innerText = timeline;
+    document.getElementById('modal_synopsis').innerText = synopsis;
+
+    overlay.style.display = 'block';
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    const overlay = document.getElementById('overlay');
+
+    document.getElementById('modal_video').src = null;
+    document.getElementById('modal_score').innerText = null;
+    document.getElementById('modal_ep').innerText = null;
+    document.getElementById('modal_genre').innerText = null;
+    document.getElementById('modal_timeline').innerText = null;
+    document.getElementById('modal_synopsis').innerText = null;
+
+    modal.style.display = 'none';
+    overlay.style.display = 'none';
+}
+

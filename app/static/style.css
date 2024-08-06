@@ -34,11 +34,11 @@ nav {
     padding: 30px 20px;
     border: none;
     color: #f9f9f9;
+    transition: transform 0.2s ease-in-out;
 }
 
 .menu li button:hover {
     background-color: #333;
-
 }
 
 hr {
@@ -51,8 +51,7 @@ hr {
 }
 
 .main header {
-    padding-top: 60px;
-    padding-bottom: 40px;
+    padding: 60px 10px 40px;
     display: flex;
 }
 
@@ -65,6 +64,7 @@ hr {
 .legend {
     display: flex;
     margin-bottom: 5px;
+    padding: 0px 10px;
 }
 
 .legend h4 {
@@ -72,17 +72,17 @@ hr {
     text-align: center;
 }
 
-.rank_legend {
+.rank_header {
     padding-left: 7px;
     text-align: left;
 }
 
-.title_legend {
+.title_header {
     flex-grow: 1;
     margin-left: 10px;
 }
 
-.score_legend {
+.score_header {
     text-align: right;
     margin-left: 10px;
     padding-right: 7px;
@@ -94,6 +94,13 @@ hr {
     border: 1px solid #333;
     border-radius: 9px;
     margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.anime_container:hover {
+    transform: scale(1.01);
 }
 
 .rank {
@@ -172,4 +179,53 @@ hr {
     .main {
         margin: 0% 5%;
     }
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+    max-width: 966px;
+}
+
+.modal-content {
+    position: relative;
+}
+
+#modal_video {
+    border: 0;
+}
+
+.modal_info h4 {
+    padding: 0;
+    margin: 15px 0 0;
+    color: #537fe7;
+}
+
+.modal_info {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+    padding: 0px 30px;
+}
+
+.modal-content p{
+    padding: 20px 30px;
+    color: #f9f9f9;
 }

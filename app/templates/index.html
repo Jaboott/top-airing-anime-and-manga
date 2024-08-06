@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <!-- Navigation Section -->
     <header>
         <nav>
             <ul class="menu">
@@ -20,18 +21,37 @@
             <hr>
         </nav>
     </header>
+    <!-- List Section -->
     <section class="main">
         <header>
             <h1 class="title">Top Airing Anime</h1>
         </header>
         <div class="ranking">
             <div class="legend">
-                <h4 class="rank_legend">Rank</h4>
-                <h4 class="title_legend">Title</h4>
-                <h4 class="score_legend">Score</h4>
+                <h4 class="rank_header">Rank</h4>
+                <h4 class="title_header">Title</h4>
+                <h4 class="score_header">Score</h4>
             </div>
         </div>
     </section>
+    <!-- Modal Section -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <iframe width="946" height="534" id="modal_video"></iframe>
+            <div class="modal_info">
+                <div>
+                    <h4 id="modal_score">Score 9.34⭐</h4>
+                    <h4 id="modal_ep">28 Episodes</h4>
+                </div>
+                <div>
+                    <h4 id="modal_genre">Genre: Adventure, Drama, Fantasy</h4>
+                    <h4 id="modal_timeline">Timeline: Sep 29, 2023 to Mar 22, 2024</h4>
+                </div>
+            </div>
+            <p id="modal_synopsis"></p>
+        </div>
+    </div>
+    <div id="overlay"></div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
