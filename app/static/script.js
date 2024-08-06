@@ -38,7 +38,7 @@ function loadList(url, isAnime) {
 
                 // Creating the html div that display the anime/manga
                 const listItem = document.createElement('div');
-                listItem.classList.add('anime_container');
+                listItem.classList.add('container');
                 listItem.innerHTML = `
                     <div class="rank">
                         <h1>${index + 1}</h1>
@@ -78,16 +78,25 @@ function loadMangaList(airing) {
 }
 
 function resetList() {
-    const elements = document.querySelectorAll(".anime_container");
+    const elements = document.querySelectorAll(".container");
     elements.forEach(element => element.remove());
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('overlay');
-
+    const modal = document.getElementById('modal');
+    // Remove the modal if user clicks outside the modal
     overlay.addEventListener('click', () => {
         closeModal();
     });
+
+    // Close modal if escape is pressed
+    document.addEventListener('keydown', (e) => {
+        if (overlay.style.display != 'none' && e.code == 'Escape') {
+            closeModal();
+        }
+    });
+
     loadAnimeList(true);
 });
 
@@ -102,8 +111,8 @@ function openModal(score, episodes, genre, timeline, youtube, synopsis) {
     document.getElementById('modal_timeline').innerText = timeline;
     document.getElementById('modal_synopsis').innerText = synopsis;
 
-    overlay.style.display = 'block';
-    modal.style.display = 'block';
+    overlay.style.display = 'flex';
+    modal.style.display = 'flex';
 }
 
 function closeModal() {

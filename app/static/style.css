@@ -88,7 +88,7 @@ hr {
     padding-right: 7px;
 }
 
-.anime_container {
+.container {
     display: flex;
     overflow: hidden;
     border: 1px solid #333;
@@ -99,7 +99,7 @@ hr {
     transition: transform 0.2s ease-in-out;
 }
 
-.anime_container:hover {
+.container:hover {
     transform: scale(1.01);
 }
 
@@ -161,26 +161,6 @@ hr {
     color: #537fe7;
 }
 
-@media (max-width: 1000px) {
-    .rank {
-        display: none;
-    }
-    .rank_legend {
-        display: none;
-    }
-    .title_legend {
-        margin-left: 0;
-        padding-left: 7px;
-        flex-grow: 0;
-    }
-    .legend {
-        justify-content: space-between;
-    }
-    .main {
-        margin: 0% 5%;
-    }
-}
-
 #overlay {
     position: fixed;
     top: 0;
@@ -201,7 +181,7 @@ hr {
     padding: 10px;
     border-radius: 10px;
     display: none;
-    max-width: 966px;
+    align-items: center;
 }
 
 .modal-content {
@@ -210,6 +190,10 @@ hr {
 
 #modal_video {
     border: 0;
+    width: 80vw;
+    height: auto;
+    max-width: 996px;
+    aspect-ratio: 16 / 9;
 }
 
 .modal_info h4 {
@@ -223,9 +207,31 @@ hr {
     justify-content: space-between;
     vertical-align: middle;
     padding: 0px 30px;
+
 }
 
-.modal-content p{
+.modal_content p{
     padding: 20px 30px;
     color: #f9f9f9;
 }
+
+@media (max-width: 1000px) {
+    .rank {
+        display: none;
+    }
+    .rank_legend {
+        display: none;
+    }
+    .title_legend {
+        margin-left: 0;
+        padding-left: 7px;
+        flex-grow: 0;
+    }
+    .legend {
+        justify-content: space-between;
+    }
+    .main {
+        margin: 0% 5%;
+    }
+}
+
