@@ -13,10 +13,12 @@ def parse_anime(anime):
     synopsis = anime["synopsis"]
     broadcast = anime["broadcast"]["string"]
     genre = parse_genre(anime["genres"])
-    score = anime["score"]
+    score = "{:.2f}".format(anime["score"])
     episodes = anime["episodes"]
     timeline = anime["aired"]["string"]
     youtube_link = str(anime["trailer"]["embed_url"])
+    if youtube_link == "None":
+        youtube_link = "https://www.youtube.com/embed/_NXrTujMP50"
     # Changing autoplay to off
     youtube_link = youtube_link.replace("autoplay=1", "autoplay=0")
 
@@ -35,7 +37,7 @@ def parse_manga(manga):
     synopsis = manga["synopsis"]
     timeline = manga["published"]["string"]
     genre = parse_genre(manga["genres"])
-    score = manga["score"]
+    score = "{:.2f}".format(manga["score"])
     chapters = manga["chapters"]
 
     return Manga(title, image, synopsis, timeline, genre, score, chapters)

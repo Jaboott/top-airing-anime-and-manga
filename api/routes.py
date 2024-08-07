@@ -11,7 +11,7 @@ def index():
     return render_template("index.html")
 
 
-@bp.route('/anime')
+@bp.route('/anime', methods=['GET'])
 def get_top_anime():
     args = request.args.get("airing")
     url = "https://api.jikan.moe/v4/top/anime?type=tv"
@@ -32,7 +32,7 @@ def get_top_anime():
     return jsonify(anime_list), 200
 
 
-@bp.route('/manga')
+@bp.route('/manga', methods=['GET'])
 def get_top_manga():
     args = request.args.get("airing")
     url = "https://api.jikan.moe/v4/top/manga?type=manga"
