@@ -35,23 +35,44 @@
         </div>
     </section>
     <!-- Modal Section -->
-    <div id="modal" class="modal">
+    <div class="modal_anime" id="modal_anime">
         <div class="modal_content">
-            <iframe id="modal_video"></iframe>
+            <iframe id="modal_video" src=""></iframe>
             <!-- Todo add name roughly above the info section-->
             <div class="modal_info">
                 <div>
-                    <h4 id="modal_score">Score 9.34⭐</h4>
-                    <h4 id="modal_ep">28 Episodes</h4>
+                    <h4 id="modal_score"></h4>
+                    <h4 id="modal_ep"></h4>
                 </div>
                 <div>
-                    <h4 id="modal_genre">Genre: Adventure, Drama, Fantasy</h4>
-                    <h4 id="modal_timeline">Timeline: Sep 29, 2023 to Mar 22, 2024</h4>
+                    <h4 id="modal_genre"></h4>
+                    <h4 id="modal_timeline"></h4>
                 </div>
             </div>
             <p id="modal_synopsis"></p>
         </div>
     </div>
+{#    <div class="modal_manga" id="modal_manga">#}
+{#        <div class="modal-content">#}
+{#            <img>#}
+{#            <div class="modal_info">#}
+{#                <h1 class="title"></h1>#}
+{#                <div class="info">#}
+{#                    <div class="top_info">#}
+{#                        <h2></h2>#}
+{#                        <br>#}
+{#                        <h2></h2>#}
+{#                    </div>#}
+{#                    <div class="bottom_info">#}
+{#                        <h2></h2>#}
+{#                        <br>#}
+{#                        <h2></h2>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <p></p>#}
+{#    </div>#}
     <div id="overlay"></div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

@@ -31,6 +31,7 @@ function loadList(url, isAnime) {
             data.forEach((item, index) => {
                 const { title, image, genre, episodes, chapters, score, broadcast, timeline, youtube_link, synopsis} = item;
                 const genres = genre.join(', ');
+                // TODO make ongoing for unknown episodes ones
                 const count = isAnime ? episodes || '???' : chapters || '???';
                 const countLabel = isAnime ? 'Episodes' : 'Chapters';
                 // Shows timeline if it's not an anime or anime is already completed
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function openModal(score, episodes, genre, timeline, youtube, synopsis) {
-    const modal = document.getElementById('modal');
+    const modal = document.getElementById('modal_anime');
     const overlay = document.getElementById('overlay');
 
     document.getElementById('modal_video').src = youtube;
@@ -115,7 +116,7 @@ function openModal(score, episodes, genre, timeline, youtube, synopsis) {
 }
 
 function closeModal() {
-    const modal = document.getElementById('modal');
+    const modal = document.getElementById('modal_anime');
     const overlay = document.getElementById('overlay');
 
     document.getElementById('modal_video').src = null;
