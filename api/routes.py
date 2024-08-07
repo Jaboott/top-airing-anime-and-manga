@@ -1,16 +1,17 @@
-from app import app
-from flask import jsonify, render_template, request
+from flask import jsonify, render_template, request, Blueprint
 import requests
 
-from app.json_parser import parse_anime, parse_manga
+from .json_parser import parse_anime, parse_manga
+
+bp = Blueprint('main', __name__)
 
 
-@app.route('/')
+@bp.route('/')
 def index():
     return render_template("index.html")
 
 
-@app.route('/anime')
+@bp.route('/anime')
 def get_top_anime():
     args = request.args.get("airing")
     url = "https://api.jikan.moe/v4/top/anime?type=tv"
@@ -31,7 +32,7 @@ def get_top_anime():
     return jsonify(anime_list), 200
 
 
-@app.route('/manga')
+@bp.route('/manga')
 def get_top_manga():
     args = request.args.get("airing")
     url = "https://api.jikan.moe/v4/top/manga?type=manga"
@@ -50,3 +51,7 @@ def get_top_manga():
         manga_list.append(manga_obj.to_dict())
 
     return jsonify(manga_list), 200
+
+
+def init_routes(app):
+    app.register_blueprint(bp)

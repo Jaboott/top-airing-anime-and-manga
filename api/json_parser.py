@@ -1,5 +1,4 @@
-from app.models import Anime
-from app.models import Manga
+from .models import Anime, Manga
 
 
 def parse_anime(anime):
