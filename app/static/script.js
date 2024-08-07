@@ -84,7 +84,6 @@ function resetList() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('overlay');
-    const modal = document.getElementById('modal');
     // Remove the modal if user clicks outside the modal
     overlay.addEventListener('click', () => {
         closeModal();

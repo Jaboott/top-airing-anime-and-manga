@@ -204,9 +204,8 @@ hr {
 
 #modal_video {
     border: 0;
-    width: 80vw;
+    width: 60vw;
     height: auto;
-    max-width: 996px;
     aspect-ratio: 16 / 9;
 }
 
