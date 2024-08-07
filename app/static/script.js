@@ -29,13 +29,21 @@ function loadList(url, isAnime) {
             const listContainer = document.querySelector('.ranking');
             // Build List item for each item of data
             data.forEach((item, index) => {
-                const { title, image, genre, episodes, chapters, score, broadcast, timeline, youtube_link, synopsis} = item;
+                const { title, image, genre, episodes, chapters, score, broadcast, timeline} = item;
                 const genres = genre.join(', ');
-                // TODO make ongoing for unknown episodes ones
-                const count = isAnime ? episodes || '???' : chapters || '???';
-                const countLabel = isAnime ? 'Episodes' : 'Chapters';
                 // Shows timeline if it's not an anime or anime is already completed
                 const timeLabel = (isAnime && timeline.includes('?')) ? `Broadcast: ${broadcast}` : `Timeline: ${timeline}`;
+                // TODO make ongoing for unknown episodes ones
+                let count;
+                let countLabel;
+                // Both null meaning series is ongoing
+                if (!episodes && !chapters) {
+                    count = '🟢 Publication: ' + timeline.match(/\b\d{4}\b/);
+                    countLabel = ', Ongoing';
+                } else {
+                    count = isAnime ? episodes || '???' : chapters || '???';
+                    countLabel = isAnime ? 'Episodes' : 'Chapters';
+                }
 
                 // Creating the html div that display the anime/manga
                 const listItem = document.createElement('div');
@@ -60,8 +68,12 @@ function loadList(url, isAnime) {
                 // Add on click event to container if it's an anime
                 if (isAnime) {
                     listItem.addEventListener("click", () => {
-                        openModal(score, count, genres, timeline, youtube_link, synopsis);
+                        openModal(item, true);
                     });
+                } else {
+                    // listItem.addEventListener("click", () => {
+                    //     openModal(item, false);
+                    // });
                 }
                 listContainer.appendChild(listItem);
             });
@@ -100,31 +112,87 @@ document.addEventListener('DOMContentLoaded', function() {
     loadAnimeList(true);
 });
 
-function openModal(score, episodes, genre, timeline, youtube, synopsis) {
-    const modal = document.getElementById('modal_anime');
+function openModal(item, isAnime) {
+    const modal = document.querySelector('.modal');
     const overlay = document.getElementById('overlay');
-
-    document.getElementById('modal_video').src = youtube;
-    document.getElementById('modal_score').innerText = 'Score: ' + score + '⭐';
-    document.getElementById('modal_ep').innerText = episodes + ' Episodes';
-    document.getElementById('modal_genre').innerText = genre;
-    document.getElementById('modal_timeline').innerText = timeline;
-    document.getElementById('modal_synopsis').innerText = synopsis;
+    const modal_content = document.createElement('div');
+    modal_content.classList.add('modal_content');
+    if (isAnime) {
+        modal_content.id = 'anime_modal'
+        setModalAnime(item, modal_content, modal);
+    } else {
+        // modal_content.id = 'manga_modal'
+        // setModalManga(item, modal_content, modal);
+    }
 
     overlay.style.display = 'flex';
     modal.style.display = 'flex';
 }
 
+function setModalAnime(item, modal_content, modal) {
+    const {genre, episodes, score, broadcast, timeline, youtube_link, synopsis} = item;
+    const genres = genre.join(', ');
+    let count_label;
+    // Episodes field is empty
+    if (episodes) {
+        count_label = episodes + " Episodes";
+    } else {
+        count_label = "🟢 Ongoing";
+    }
+
+    modal_content.innerHTML = `
+        <iframe id="modal_video" src="${youtube_link}"></iframe>
+        <div class="modal_info">
+            <div>
+                <h4 id="modal_score">Score: ${score}⭐</h4>
+                <h4 id="modal_ep">${count_label}</h4>
+            </div>
+            <div>
+                <h4 id="modal_genre">${genres}</h4>
+                <h4 id="modal_timeline">${timeline}</h4>
+            </div>
+        </div>
+        <p id="modal_synopsis"></p>
+    `;
+
+    modal.appendChild(modal_content);
+    document.getElementById('modal_synopsis').innerText = synopsis;
+}
+
+// function setModalManga(item, modal_content, modal) {
+//     const {title, image, genre, chapters, score, timeline, synopsis} = item;
+//      modal_content.innerHTML = `
+//         <div class="modal_header">
+//             <img src="${image}">
+//             <div class="modal_info">
+//                 <h1 class="title">${title}</h1>
+//                 <div class="info">
+//                     <div class="top_info">
+//                         <h2>${score}</h2>
+//                         <br>
+//                         <h2>${chapters}</h2>
+//                     </div>
+//                     <div class="bottom_info">
+//                         <h2>${genre}</h2>
+//                         <br>
+//                         <h2>${timeline}</h2>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//         <p id="modal_synopsis"></p>
+//     `;
+//
+//     modal.appendChild(modal_content);
+//     document.getElementById('modal_synopsis').innerText = synopsis;
+// }
+
 function closeModal() {
-    const modal = document.getElementById('modal_anime');
+    const modal = document.querySelector('.modal');
     const overlay = document.getElementById('overlay');
 
-    document.getElementById('modal_video').src = null;
-    document.getElementById('modal_score').innerText = null;
-    document.getElementById('modal_ep').innerText = null;
-    document.getElementById('modal_genre').innerText = null;
-    document.getElementById('modal_timeline').innerText = null;
-    document.getElementById('modal_synopsis').innerText = null;
+    document.querySelector('.modal_content').remove();
+    modal.scrollTo(top);
 
     modal.style.display = 'none';
     overlay.style.display = 'none';
