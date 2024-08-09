@@ -1,5 +1,5 @@
 function switchPage(mode) {
-    const pageTitle = document.querySelector('.title');
+    const pageTitle = document.getElementById('header');
     resetList();
 
     switch (mode) {
@@ -70,10 +70,6 @@ function loadList(url, isAnime) {
                     listItem.addEventListener("click", () => {
                         openModal(item, true);
                     });
-                } else {
-                    // listItem.addEventListener("click", () => {
-                    //     openModal(item, false);
-                    // });
                 }
                 listContainer.appendChild(listItem);
             });
@@ -158,34 +154,6 @@ function setModalAnime(item, modal_content, modal) {
     modal.appendChild(modal_content);
     document.getElementById('modal_synopsis').innerText = synopsis;
 }
-
-// function setModalManga(item, modal_content, modal) {
-//     const {title, image, genre, chapters, score, timeline, synopsis} = item;
-//      modal_content.innerHTML = `
-//         <div class="modal_header">
-//             <img src="${image}">
-//             <div class="modal_info">
-//                 <h1 class="title">${title}</h1>
-//                 <div class="info">
-//                     <div class="top_info">
-//                         <h2>${score}</h2>
-//                         <br>
-//                         <h2>${chapters}</h2>
-//                     </div>
-//                     <div class="bottom_info">
-//                         <h2>${genre}</h2>
-//                         <br>
-//                         <h2>${timeline}</h2>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//         <p id="modal_synopsis"></p>
-//     `;
-//
-//     modal.appendChild(modal_content);
-//     document.getElementById('modal_synopsis').innerText = synopsis;
-// }
 
 function closeModal() {
     const modal = document.querySelector('.modal');
