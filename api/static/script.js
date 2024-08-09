@@ -141,7 +141,7 @@ function setModalAnime(item, modal_content, modal) {
     }
 
     modal_content.innerHTML = `
-        <iframe id="modal_video" src="${youtube_link}"></iframe>
+        <iframe class="modal_video" src="${youtube_link}"></iframe>
         <div class="modal_info">
             <div>
                 <h4 id="modal_score">Score: ${score}⭐</h4>
