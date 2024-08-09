@@ -1,5 +1,5 @@
 function switchPage(mode) {
-    const pageTitle = document.getElementById('header');
+    const pageTitle = document.getElementById('page_title');
     resetList();
 
     switch (mode) {
