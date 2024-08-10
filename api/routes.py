@@ -1,4 +1,4 @@
-from multiprocessing import process
+import os
 
 import redis
 from flask import jsonify, render_template, request, Blueprint, json
@@ -8,10 +8,10 @@ from .json_parser import parse_anime, parse_manga
 
 bp = Blueprint('main', __name__)
 r = redis.Redis(
-    host=process.env.DB_HOST,
-    port=process.env.DB_PORT,
+    host=os.environ.get('DB_HOST'),
+    port=os.environ.get('DB_PORT'),
     db=0,
-    password=process.env.DB_PASSWORD
+    password=os.environ.get('DB_PASSWORD')
 )
 
 
