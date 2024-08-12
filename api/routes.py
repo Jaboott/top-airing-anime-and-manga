@@ -61,7 +61,7 @@ def query_api(is_anime, is_airing):
             obj_list.append(obj.to_dict())
 
         # Set the TTL of the cache to 1 hr
-        r.set(url, json.dumps(obj_list), ex=3600)
+        r.set(url, json.dumps(obj_list), ex=21600)
         return obj_list
 
     return json.loads(cached_data)
