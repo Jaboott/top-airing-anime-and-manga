@@ -89,6 +89,7 @@ nav {
 .container {
   display: flex;
   border: 1px solid #333;
+  overflow: hidden;
   border-radius: 9px;
   margin: 10px;
   transition: transform 0.2s ease-in-out;
@@ -254,6 +255,7 @@ nav {
       width: 80vw;
       height: 170px;
       overflow-y: hidden;
+      overflow-x: scroll;
       white-space: nowrap;
     }
   }
