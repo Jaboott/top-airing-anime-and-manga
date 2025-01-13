@@ -1,0 +1,29 @@
+name: DB Update
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Runs once a day at midnight
+  workflow_dispatch:
+
+jobs:
+  ping-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run DB update for airing anime
+        run: |
+          curl -f https://topanime.jaboott.com/anime?airing
+
+      - name: Run DB update for anime
+        run: |
+          curl -f https://topanime.jaboott.com/anime
+
+      - name: Run DB update for airing manga
+        run: |
+          curl -f https://topanime.jaboott.com/manga?airing
+
+      - name: Run DB update for manga
+        run: |
+          curl -f https://topanime.jaboott.com/manga
