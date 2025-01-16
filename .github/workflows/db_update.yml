@@ -1,4 +1,4 @@
-name: DB Update
+name: Pre-Cache Website
 
 on:
   schedule:
@@ -12,18 +12,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Run DB update for airing anime
+      - name: Run pre-cache for airing anime
         run: |
           curl -f https://topanime.jaboott.com/anime?airing
 
-      - name: Run DB update for anime
+      - name: Run pre-cache for anime
         run: |
           curl -f https://topanime.jaboott.com/anime
 
-      - name: Run DB update for airing manga
+      - name: Run pre-cache for airing manga
         run: |
           curl -f https://topanime.jaboott.com/manga?airing
 
-      - name: Run DB update for manga
+      - name: Run pre-cache for manga
         run: |
           curl -f https://topanime.jaboott.com/manga
