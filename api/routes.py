@@ -7,6 +7,7 @@ import requests
 from .json_parser import parse_anime, parse_manga
 
 bp = Blueprint('main', __name__)
+
 r = redis.Redis(
     host=os.environ.get('DB_HOST'),
     port=os.environ.get('DB_PORT'),
@@ -43,7 +44,11 @@ def query_api(is_anime, is_airing):
     url = base_url + category + filter_type
 
     # Checking if the data is in cache
-    cached_data = r.get(url)
+    try:
+        cached_data = r.get(url)
+    except Exception as e:
+        print(f"Failed to get data from cache with error: {e}")
+        cached_data = None
 
     # Store the query data in cache if it's not already there
     if cached_data is None:
@@ -61,7 +66,11 @@ def query_api(is_anime, is_airing):
             obj_list.append(obj.to_dict())
 
         # Set the TTL of the cache to 1 day
-        r.set(url, json.dumps(obj_list), ex=82800)
+        try:
+            r.set(url, json.dumps(obj_list), ex=82800)
+        except Exception as e:
+            print(f"Failed to store to redis with error: {e}")
+
         return obj_list
 
     return json.loads(cached_data)
